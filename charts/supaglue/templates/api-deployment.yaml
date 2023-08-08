@@ -66,6 +66,8 @@ spec:
               value: "1"
             - name: SUPAGLUE_SERVER_URL
               value: {{ required "api.serverUrl is required" .Values.api.serverUrl }}
+            - name: SUPAGLUE_MAGIC_LINK_URL
+              value: {{ required "management.frontendUrl is required" .Values.management.frontendUrl }}
             - name: SUPAGLUE_OAUTH_RETURN_URL
               value: {{ required "api.oauthReturnUrl is required" .Values.api.oauthReturnUrl }}
             - name: SUPAGLUE_LOG_LEVEL
