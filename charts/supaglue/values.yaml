@@ -92,6 +92,7 @@ api:
   serverUrl: ""
   oauthReturnUrl: ""
   corsOrigin: ""
+  magicLinkurl: ""
   image:
     repository: ~
     tag: ~
