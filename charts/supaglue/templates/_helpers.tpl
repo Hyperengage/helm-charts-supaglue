@@ -175,7 +175,7 @@ and we want to make sure that the component is included in the name.
 {{- $databaseUrl := include "supaglue.managedDatabaseUrl" . -}}
 {{- $connectionLimit := ((.Values.managedDatabase).parameters).connectionLimit -}}
 {{- $poolTimeout := ((.Values.managedDatabase).parameters).poolTimeout -}}
-{{- $sslCert := empty ((.Values.managedDatabase).parameters).sslCert | ternary nil (urlquery ((.Values.syncWorker.db).parameters).sslCert) -}}
+{{- $sslCert := empty ((.Values.managedDatabase).parameters).sslCert | ternary nil (urlquery ((.Values.managedDatabase).parameters).sslCert) -}}
 {{- $sslMode := ((.Values.managedDatabase).parameters).sslMode -}}
 {{- $sslIdentity := ((.Values.managedDatabase).parameters).sslIdentity -}}
 {{- $sslPassword := ((.Values.managedDatabase).parameters).sslPassword -}}
