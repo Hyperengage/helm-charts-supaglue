@@ -139,6 +139,13 @@ serviceAccount:
 
 existingSecret: ~
 
+managedDatabase:
+  name: ~
+  username: ~
+  password: ~
+  host: ~
+  port: ~
+
 secretKeys:
   databaseUrl: database-url
   dbEncryptionSecret: db-encryption-secret
@@ -147,7 +154,9 @@ secretKeys:
   internalApiToken: internal-api-token
   adminPassword: admin-password
   apiDatabaseUrl: api-database-url
+  apiManagedDatabaseUrl: api-managed-database-url
   syncWorkerDatabaseUrl: sync-worker-database-url
+  syncWorkerManagedDatabaseUrl: sync-worker-managed-database-url
   salesforcePubSubDatabaseUrl: salesforce-pubsub-database-url
   svixApiToken: svix-api-token
 
@@ -174,6 +183,7 @@ temporal:
     persistence:
       enabled: true
 
+# Not used in prod
 postgresql:
   enabled: true
   host: ~

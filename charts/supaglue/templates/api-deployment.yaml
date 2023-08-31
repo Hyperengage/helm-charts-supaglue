@@ -93,6 +93,11 @@ spec:
                 secretKeyRef:
                   name: {{ template "supaglue.secretName" . }}
                   key: {{ default "api-database-url" .Values.secretKeys.apiDatabaseUrl }}
+            - name: SUPAGLUE_MANAGED_DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "supaglue.secretName" . }}
+                  key: {{ default "api-managed-database-url" .Values.secretKeys.apiManagedDatabaseUrl }}
             - name: SUPAGLUE_INTERNAL_TOKEN
               valueFrom:
                 secretKeyRef:
