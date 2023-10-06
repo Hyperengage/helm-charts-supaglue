@@ -200,3 +200,14 @@ postgresql:
     extendedConfiguration: |
       max_connections = 400
       idle_in_transaction_session_timeout = 600000
+
+integrationTesting:
+  enabled: false
+  image:
+    repository: ~
+    tag: ~
+    pullPolicy: ~
+  backoffLimit: 1
+  env: []
+  additionalVolumeMounts: []
+  additionalVolumes: []

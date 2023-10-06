@@ -72,11 +72,11 @@ spec:
           command: ['sh', '-c', 'npx prisma@4.12.0 migrate deploy && node node_modules/@supaglue/db/prisma/seed.js && node init_scripts/init_temporal.js']
           {{- end }}
           volumeMounts:
-            {{- if .Values.api.additionalVolumeMounts }}
+            {{- if .Values.schema.update.additionalVolumeMounts }}
             {{- toYaml .Values.schema.update.additionalVolumeMounts | nindent 12}}
             {{- end }}
       volumes:
-        {{- if .Values.api.additionalVolumes }}
+        {{- if .Values.schema.update.additionalVolumes }}
         {{- toYaml .Values.schema.update.additionalVolumes | nindent 8}}
         {{- end }}
 {{ end }}
