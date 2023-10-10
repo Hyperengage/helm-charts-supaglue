@@ -33,7 +33,7 @@ spec:
       restartPolicy: "OnFailure"
       containers:
         - name: integration-testing
-          image: "{{ default "debian:bullseye" .Values.integrationTesting.image.repository }}:{{ default .Chart.AppVersion .Values.integrationTesting.image.tag }}"
+          image: "{{ default "curlimages/curl" .Values.integrationTesting.image.repository }}"
           imagePullPolicy: {{ default "IfNotPresent" .Values.integrationTesting.image.pullPolicy }}
           env:
             - name: NODE_ENV
@@ -42,19 +42,9 @@ spec:
             {{- toYaml . | nindent 12 }}
             {{- end }}
           command: [
-            "curl",
-            "-L",
-            "-X",
-            "POST",
-            "-H",
-            "Accept: application/vnd.github+json",
-            "-H",
-            "Authorization: Bearer $GITHUB_TOKEN",
-            "-H",
-            "X-GitHub-Api-Version: 2022-11-28",
-            "https://api.github.com/repos/supaglue-labs/supaglue/dispatches",
-            "-d",
-            '{"event_type":"production_integration_tests"}'
+              "/bin/sh",
+              "-c",
+              "curl -L -s --fail-with-body -X POST -H 'Accept: application/vnd.github+json' -H \"Authorization: Bearer $GITHUB_TOKEN\" -H 'X-GitHub-Api-Version: 2022-11-28' https://api.github.com/repos/supaglue-labs/supaglue/dispatches -d '{\"event_type\":\"production_integration_tests\"}' || sleep 1000",
           ]
           volumeMounts:
             {{- if .Values.integrationTesting.additionalVolumeMounts }}
