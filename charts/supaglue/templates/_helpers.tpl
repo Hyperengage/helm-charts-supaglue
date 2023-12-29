@@ -110,7 +110,8 @@ and we want to make sure that the component is included in the name.
 {{- $sslIdentity := ((.Values.syncWorker.db).parameters).sslIdentity -}}
 {{- $sslPassword := ((.Values.syncWorker.db).parameters).sslPassword -}}
 {{- $sslAccept := ((.Values.syncWorker.db).parameters).sslAccept -}}
-{{- $params := dict "connection_limit" $connectionLimit "pool_timeout" $poolTimeout "sslcert" $sslCert "sslmode" $sslMode "sslidentity" $sslIdentity "sslpassword" $sslPassword "sslaccept" $sslAccept -}}
+{{- $schema := default "public" .Values.api.db.schema -}}
+{{- $params := dict "connection_limit" $connectionLimit "pool_timeout" $poolTimeout "sslcert" $sslCert "sslmode" $sslMode "sslidentity" $sslIdentity "sslpassword" $sslPassword "sslaccept" $sslAccept "schema" $schema -}}
 {{- $lastIndex := sub (len (keys $params)) 1 -}}
 {{- print $databaseUrl "?" -}}
 {{- range $index, $key := keys $params -}}
